@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "mkdir -p dist && cp -r index.html dist/ && cp -r assets dist/ || true",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "npm install --legacy-peer-deps || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

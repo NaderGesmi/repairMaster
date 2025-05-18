@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ريبير ماستر - خدمات التكييف والإلكترونيات</title>
+  <meta name="description" content="خدمات إصلاح وصيانة احترافية للإلكترونيات وتكييف الهواء في بوخارست. سريعة وموثوقة وشفافة." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="ريبير ماستر - خدمات التكييف والإلكترونيات" />
+  <meta property="og:description" content="خدمات إصلاح وصيانة احترافية للإلكترونيات وتكييف الهواء في بوخارست. سريعة وموثوقة وشفافة." />
+  <meta property="og:image" content="https://yourdomain.com/og-image.webp" />
+  <meta property="og:url" content="https://yourdomain.com/ar/" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ريبير ماستر - خدمات التكييف والإلكترونيات" />
+  <meta name="twitter:description" content="خدمات إصلاح وصيانة احترافية للإلكترونيات وتكييف الهواء في بوخارست. سريعة وموثوقة وشفافة." />
+  <meta name="twitter:image" content="https://yourdomain.com/og-image.webp" />
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="https://yourdomain.com/en/" />
+  <link rel="alternate" hreflang="ar" href="https://yourdomain.com/ar/" />
+  <link rel="alternate" hreflang="ro" href="https://yourdomain.com/" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS.js -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- SwiperJS for testimonials carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <!-- Toastify for notifications -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+  <style>
+    html[dir="rtl"] { direction: rtl; }
+    .swiper { width: 100%; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+  <!-- Sticky Navbar -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-xl text-cyan-600">ريبير ماستر</span>
+      </div>
+      <div class="hidden md:flex gap-6">
+        <a href="#services" class="hover:text-cyan-600 transition">الخدمات</a>
+        <a href="#pricing" class="hover:text-cyan-600 transition">الأسعار</a>
+        <a href="#testimonials" class="hover:text-cyan-600 transition">آراء العملاء</a>
+        <a href="#contact" class="hover:text-cyan-600 transition">اتصل بنا</a>
+        <div class="flex gap-2">
+          <a href="/" class="px-2 py-1 rounded bg-cyan-600 text-white text-xs">RO</a>
+          <a href="/en/" class="px-2 py-1 rounded bg-cyan-600 text-white text-xs">EN</a>
+          <button id="darkToggle" class="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs dark:text-white">🌙</button>
+        </div>
+      </div>
+      <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-cyan-50 dark:hover:bg-gray-800">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden flex-col bg-white dark:bg-gray-900 px-4 py-2">
+      <a href="#services" class="py-2 block hover:text-cyan-600">الخدمات</a>
+      <a href="#pricing" class="py-2 block hover:text-cyan-600">الأسعار</a>
+      <a href="#testimonials" class="py-2 block hover:text-cyan-600">آراء العملاء</a>
+      <a href="#contact" class="py-2 block hover:text-cyan-600">اتصل بنا</a>
+      <div class="flex gap-2 mt-2">
+        <a href="/" class="px-2 py-1 rounded bg-cyan-600 text-white text-xs">RO</a>
+        <a href="/en/" class="px-2 py-1 rounded bg-cyan-600 text-white text-xs">EN</a>
+        <button id="darkToggleMobile" class="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-xs dark:text-white">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-16 pb-10 bg-gradient-to-br from-cyan-600 to-cyan-400 text-white" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">إصلاحات سريعة وموثوقة لمنزلك ومكتبك</h1>
+        <p class="mb-6 text-lg">نقوم بإصلاح الأجهزة الإلكترونية وتكييف الهواء في بوخارست. أسعار شفافة، ضمان 6 أشهر، واستجابة سريعة.</p>
+        <a href="#contact" class="inline-block bg-white text-cyan-600 font-semibold px-6 py-3 rounded shadow hover:bg-cyan-50 transition">احجز خدمة</a>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="https://placehold.co/400x300/0099CC/fff?text=Repair+Hero" alt="خدمات الإصلاح" class="rounded-lg shadow-lg w-full max-w-xs md:max-w-md" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-12 bg-white dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">خدماتنا</h2>
+        <p class="text-gray-700 dark:text-gray-300">نقدم خدمات شاملة لإصلاح وصيانة الأجهزة الإلكترونية وأنظمة التكييف.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow hover:scale-105 transition flex flex-col items-center">
+          <div class="text-4xl mb-3">📺</div>
+          <h3 class="font-semibold text-lg mb-2 text-cyan-700">إصلاح التلفزيونات</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 text-center">نصلح جميع أنواع التلفزيونات LED وLCD وSmart TV.</p>
+          <button class="text-cyan-600 hover:underline mb-2" onclick="this.nextElementSibling.classList.toggle('hidden')">تفاصيل والأسعار</button>
+          <div class="hidden text-xs text-right w-full bg-white dark:bg-gray-900 rounded p-3 border border-cyan-100 dark:border-gray-700 mb-2">
+            <p class="font-bold text-cyan-700 mb-1">السعر: ابتداءً من 150 لي</p>
+            <p class="mb-2">تشخيص مجاني. نصلح مشاكل الصورة، الصوت، الإضاءة الخلفية، ولوحات التحكم. ضمان 6 أشهر على جميع الإصلاحات.</p>
+            <h4 class="font-semibold mb-1">مشاكل شائعة نحلها:</h4>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+              <li>مشاكل الشاشة (صورة داكنة، خطوط، بقع)</li>
+              <li>مشاكل الصوت (لا يوجد صوت، تشويش)</li>
+              <li>مشاكل الطاقة (لا يعمل، ينطفئ فجأة)</li>
+              <li>مشاكل Smart TV (تطبيقات، اتصال)</li>
+              <li>تبديل الإضاءة الخلفية والمكونات</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/40741318528?text=أرغب%20في%20حجز%20إصلاح%20تلفزيون" class="mt-auto inline-flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">
+            📅 <span>احجز الآن</span>
+          </a>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow hover:scale-105 transition flex flex-col items-center">
+          <div class="text-4xl mb-3">💨</div>
+          <h3 class="font-semibold text-lg mb-2 text-cyan-700">تنظيف المكيف</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 text-center">تنظيف و تعقيم احترافي كامل لأجهزة التكييف.</p>
+          <button class="text-cyan-600 hover:underline mb-2" onclick="this.nextElementSibling.classList.toggle('hidden')">تفاصيل والأسعار</button>
+          <div class="hidden text-xs text-right w-full bg-white dark:bg-gray-900 rounded p-3 border border-cyan-100 dark:border-gray-700 mb-2">
+            <p class="font-bold text-cyan-700 mb-1">السعر: ابتداءً من 100 لي</p>
+            <p class="mb-2">تنظيف كامل بغلاف خاص، تعقيم، فحص الفريون. الخدمة متوفرة لجميع الماركات والموديلات.</p>
+            <h4 class="font-semibold mb-1">تشمل الخدمة:</h4>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+              <li>تنظيف الفلاتر والوحدة الداخلية</li>
+              <li>تعقيم احترافي</li>
+              <li>فحص مستوى الفريون</li>
+              <li>تنظيف الوحدة الخارجية</li>
+              <li>فحص التشغيل الأمثل</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/40741318528?text=أرغب%20في%20حجز%20تنظيف%20مكيف" class="mt-auto inline-flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">
+            📅 <span>احجز الآن</span>
+          </a>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow hover:scale-105 transition flex flex-col items-center">
+          <div class="text-4xl mb-3">🌡️</div>
+          <h3 class="font-semibold text-lg mb-2 text-cyan-700">تركيب المكيف</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 text-center">تركيب احترافي لأجهزة التكييف.</p>
+          <button class="text-cyan-600 hover:underline mb-2" onclick="this.nextElementSibling.classList.toggle('hidden')">تفاصيل والأسعار</button>
+          <div class="hidden text-xs text-right w-full bg-white dark:bg-gray-900 rounded p-3 border border-cyan-100 dark:border-gray-700 mb-2">
+            <p class="font-bold text-cyan-700 mb-1">السعر: ابتداءً من 300 لي</p>
+            <p class="mb-2">تركيب كامل يشمل الحفر، تثبيت الحامل، والتوصيل. السعر حسب BTU وتعقيد التركيب.</p>
+            <h4 class="font-semibold mb-1">تشمل الخدمة:</h4>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+              <li>تركيب الوحدة الداخلية والخارجية</li>
+              <li>حفر الجدار وتمديد الأنابيب</li>
+              <li>توصيل كهربائي واختبار</li>
+              <li>فحص التسرب</li>
+              <li>إرشادات الاستخدام</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/40741318528?text=أرغب%20في%20حجز%20تركيب%20مكيف" class="mt-auto inline-flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">
+            📅 <span>احجز الآن</span>
+          </a>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow hover:scale-105 transition flex flex-col items-center">
+          <div class="text-4xl mb-3">🛠️</div>
+          <h3 class="font-semibold text-lg mb-2 text-cyan-700">فحص الفريون</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2 text-center">فحص وتعبئة الفريون لأداء مثالي.</p>
+          <button class="text-cyan-600 hover:underline mb-2" onclick="this.nextElementSibling.classList.toggle('hidden')">تفاصيل والأسعار</button>
+          <div class="hidden text-xs text-right w-full bg-white dark:bg-gray-900 rounded p-3 border border-cyan-100 dark:border-gray-700 mb-2">
+            <p class="font-bold text-cyan-700 mb-1">السعر: ابتداءً من 80 لي</p>
+            <p class="mb-2">فحص مستوى الفريون، كشف التسرب، تعبئة. نستخدم فقط فريون عالي الجودة متوافق مع جهازك.</p>
+            <h4 class="font-semibold mb-1">تشمل الخدمة:</h4>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+              <li>فحص ضغط الفريون</li>
+              <li>كشف التسرب</li>
+              <li>تعبئة الفريون (إذا لزم الأمر)</li>
+              <li>فحص التشغيل</li>
+              <li>توصيات للكفاءة القصوى</li>
+            </ul>
+          </div>
+          <a href="https://wa.me/40741318528?text=أرغب%20في%20حجز%20فحص%20فريون" class="mt-auto inline-flex items-center gap-2 bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 transition">
+            📅 <span>احجز الآن</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Trust Section -->
+  <section class="py-10 bg-cyan-50 dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold mb-6 text-cyan-700 dark:text-cyan-300">شاهد فيديوهات حقيقية للإصلاح على:</h3>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="https://www.tiktok.com/@repairversehub" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white dark:bg-gray-900 border border-cyan-100 dark:border-gray-700 px-6 py-3 rounded-lg shadow hover:bg-cyan-100 dark:hover:bg-gray-700 transition">
+            <span class="text-2xl">🎥</span>
+            <span class="font-semibold text-cyan-700 dark:text-cyan-300">تيك توك @repairversehub</span>
+          </a>
+          <a href="https://www.instagram.com/repairversehub" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white dark:bg-gray-900 border border-cyan-100 dark:border-gray-700 px-6 py-3 rounded-lg shadow hover:bg-cyan-100 dark:hover:bg-gray-700 transition">
+            <span class="text-2xl">📸</span>
+            <span class="font-semibold text-cyan-700 dark:text-cyan-300">انستغرام @repairversehub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-10 bg-cyan-600 text-white text-center" data-aos="zoom-in">
+    <h2 class="text-2xl md:text-3xl font-bold mb-2">بحاجة إلى خدمة سريعة؟</h2>
+    <p class="mb-4">اتصل بنا الآن أو احجز عبر الإنترنت للحصول على استجابة سريعة!</p>
+    <a href="tel:+40741318528" class="inline-block bg-white text-cyan-600 font-semibold px-6 py-3 rounded shadow hover:bg-cyan-50 transition">📞 +40 741 318 528</a>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-12 bg-white dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">ماذا يقول عملاؤنا</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Testimonial 1 -->
+          <div class="swiper-slide flex flex-col items-center bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow mx-2">
+            <img src="https://placehold.co/80x80/0099CC/fff?text=AP" alt="Alexandru P." class="rounded-full mb-3 shadow" loading="lazy" />
+            <div class="flex gap-1 mb-2">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-center text-gray-700 dark:text-gray-300 mb-2">"خدمة ممتازة! تم إصلاح تلفازي سامسونج في نفس اليوم. محترفون وسعر عادل."</p>
+            <span class="font-semibold text-cyan-700">ألكسندرو ب.</span>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="swiper-slide flex flex-col items-center bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow mx-2">
+            <img src="https://placehold.co/80x80/0099CC/fff?text=GS" alt="Gabriela S." class="rounded-full mb-3 shadow" loading="lazy" />
+            <div class="flex gap-1 mb-2">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-gray-300 dark:text-gray-600">★</span>
+            </div>
+            <p class="text-center text-gray-700 dark:text-gray-300 mb-2">"سريعون واحترافيون. مكيف الهواء يعمل بشكل مثالي الآن!"</p>
+            <span class="font-semibold text-cyan-700">غابرييلا س.</span>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="swiper-slide flex flex-col items-center bg-cyan-50 dark:bg-gray-800 p-6 rounded-lg shadow mx-2">
+            <img src="https://placehold.co/80x80/0099CC/fff?text=MD" alt="Mihai D." class="rounded-full mb-3 shadow" loading="lazy" />
+            <div class="flex gap-1 mb-2">
+              <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-center text-gray-700 dark:text-gray-300 mb-2">"تركيب وتثبيت تلفزيون على الحائط بشكل مثالي. أنصح بهم بشدة!"</p>
+            <span class="font-semibold text-cyan-700">ميهاي د.</span>
+          </div>
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table Section -->
+  <section id="pricing" class="py-12 bg-gray-50 dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-2">قائمة الأسعار</h2>
+        <p class="text-gray-700 dark:text-gray-300">أسعار شفافة لجميع خدماتنا</p>
+      </div>
+      <!-- Tabs -->
+      <div class="flex justify-center mb-6">
+        <button id="tab-tv" class="px-6 py-2 rounded-t-lg font-semibold bg-cyan-600 text-white focus:outline-none focus:ring-2 focus:ring-cyan-300 transition">إصلاح التلفزيونات</button>
+        <button id="tab-ac" class="px-6 py-2 rounded-t-lg font-semibold bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 ml-2 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition">خدمات المكيف</button>
+      </div>
+      <!-- TV Pricing Table -->
+      <div id="tv-pricing" class="bg-white dark:bg-gray-900 rounded-b-lg shadow overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-cyan-100 dark:bg-gray-800 text-cyan-700 dark:text-cyan-300">
+              <th class="py-3 px-4 text-right">الخدمة</th>
+              <th class="py-3 px-4 text-right">الحجم</th>
+              <th class="py-3 px-4 text-right">السعر القياسي</th>
+              <th class="py-3 px-4 text-right">سعر العرض</th>
+              <th class="py-3 px-4 text-right">التوفير</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">إصلاح التلفزيونات</td>
+              <td class="py-2 px-4">32"</td>
+              <td class="py-2 px-4">250 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">198 لي</td>
+              <td class="py-2 px-4 text-green-600">52 لي (20%)</td>
+            </tr>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">إصلاح التلفزيونات</td>
+              <td class="py-2 px-4">43"</td>
+              <td class="py-2 px-4">350 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">280 لي</td>
+              <td class="py-2 px-4 text-green-600">70 لي (20%)</td>
+            </tr>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">إصلاح التلفزيونات</td>
+              <td class="py-2 px-4">50"</td>
+              <td class="py-2 px-4">450 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">360 لي</td>
+              <td class="py-2 px-4 text-green-600">90 لي (20%)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4">إصلاح التلفزيونات</td>
+              <td class="py-2 px-4">55"</td>
+              <td class="py-2 px-4">550 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">440 لي</td>
+              <td class="py-2 px-4 text-green-600">110 لي (20%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- AC Pricing Table -->
+      <div id="ac-pricing" class="bg-white dark:bg-gray-900 rounded-b-lg shadow overflow-x-auto hidden">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="bg-cyan-100 dark:bg-gray-800 text-cyan-700 dark:text-cyan-300">
+              <th class="py-3 px-4 text-right">الخدمة</th>
+              <th class="py-3 px-4 text-right">نوع الوحدة</th>
+              <th class="py-3 px-4 text-right">السعر القياسي</th>
+              <th class="py-3 px-4 text-right">سعر العرض</th>
+              <th class="py-3 px-4 text-right">التوفير</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">تنظيف المكيف</td>
+              <td class="py-2 px-4">9000 BTU</td>
+              <td class="py-2 px-4">150 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">120 لي</td>
+              <td class="py-2 px-4 text-green-600">30 لي (20%)</td>
+            </tr>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">تنظيف المكيف</td>
+              <td class="py-2 px-4">12000 BTU</td>
+              <td class="py-2 px-4">180 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">144 لي</td>
+              <td class="py-2 px-4 text-green-600">36 لي (20%)</td>
+            </tr>
+            <tr class="border-b border-cyan-50 dark:border-gray-800">
+              <td class="py-2 px-4">تنظيف المكيف</td>
+              <td class="py-2 px-4">18000 BTU</td>
+              <td class="py-2 px-4">220 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">176 لي</td>
+              <td class="py-2 px-4 text-green-600">44 لي (20%)</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4">تنظيف المكيف</td>
+              <td class="py-2 px-4">24000 BTU</td>
+              <td class="py-2 px-4">250 لي</td>
+              <td class="py-2 px-4 text-cyan-600 font-bold">200 لي</td>
+              <td class="py-2 px-4 text-green-600">50 لي (20%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- CTA -->
+      <div class="text-center mt-6">
+        <a href="https://wa.me/40741318528?text=أرغب%20في%20حجز%20خدمة" class="inline-flex items-center gap-2 bg-cyan-600 text-white px-6 py-3 rounded shadow hover:bg-cyan-700 transition font-semibold">
+          📅 <span>احجز الآن</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Booking -->
+  <section id="contact" class="py-12 bg-white dark:bg-gray-900" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">اتصل بنا & الحجز</h2>
+      <form id="contactForm" class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block font-semibold mb-1">الاسم</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+          </div>
+          <div>
+            <label for="email" class="block font-semibold mb-1">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="phone" class="block font-semibold mb-1">الهاتف</label>
+            <input type="tel" id="phone" name="phone" required pattern="^\\+?\\d{10,15}$" class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+          </div>
+          <div>
+            <label for="date" class="block font-semibold mb-1">تاريخ الحجز</label>
+            <input type="date" id="date" name="date" required class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="time" class="block font-semibold mb-1">الوقت</label>
+            <input type="time" id="time" name="time" required class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white" />
+          </div>
+          <div>
+            <label for="message" class="block font-semibold mb-1">الرسالة</label>
+            <textarea id="message" name="message" rows="3" required class="w-full px-4 py-2 rounded border border-cyan-200 focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100 dark:bg-gray-900 dark:border-gray-700 dark:text-white"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-cyan-600 text-white font-semibold py-3 rounded hover:bg-cyan-700 transition">إرسال & حجز</button>
+      </form>
+      <!-- Google Maps Embed -->
+      <div class="mt-8 rounded-lg overflow-hidden shadow" data-aos="fade-up">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.123456789!2d26.123456!3d44.432345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff123456789%3A0x123456789abcdef!2sBucharest!5e0!3m2!1sar!2sro!4v1680000000000!5m2!1sar!2sro" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" aria-label="موقع العمل"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-200 dark:bg-gray-950 dark:text-gray-200 pt-12 pb-6 mt-12" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <!-- Logo & Social -->
+        <div>
+          <h2 class="text-2xl font-bold text-cyan-500 mb-2">ريبير ماستر</h2>
+          <p class="mb-4 text-gray-400">خدمات إصلاح إلكترونيات وتكييف احترافية في بوخارست، استجابة سريعة وجودة مضمونة.</p>
+          <div class="flex gap-3 mt-2">
+            <a href="tel:+40741318528" class="bg-cyan-600 hover:bg-cyan-700 text-white p-2 rounded-full transition" aria-label="الهاتف"><span class="text-xl">📱</span></a>
+            <a href="https://wa.me/40741318528" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition" aria-label="واتساب"><span class="text-xl">💬</span></a>
+            <a href="mailto:contact@repairmaster.ro" class="bg-cyan-600 hover:bg-cyan-700 text-white p-2 rounded-full transition" aria-label="البريد الإلكتروني"><span class="text-xl">📧</span></a>
+            <a href="https://www.instagram.com/repairversehub" class="bg-pink-500 hover:bg-pink-600 text-white p-2 rounded-full transition" aria-label="انستغرام"><span class="text-xl">📸</span></a>
+            <a href="https://www.tiktok.com/@repairversehub" class="bg-black hover:bg-gray-700 text-white p-2 rounded-full transition" aria-label="تيك توك"><span class="text-xl">🎥</span></a>
+          </div>
+        </div>
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-cyan-400">الخدمات</h3>
+          <ul class="space-y-2">
+            <li><a href="#services" class="hover:text-cyan-400 transition">إصلاح التلفزيونات</a></li>
+            <li><a href="#services" class="hover:text-cyan-400 transition">تنظيف المكيف</a></li>
+            <li><a href="#services" class="hover:text-cyan-400 transition">تركيب المكيف</a></li>
+            <li><a href="#services" class="hover:text-cyan-400 transition">فحص الفريون</a></li>
+            <li><a href="#services" class="hover:text-cyan-400 transition">تشخيص الأعطال</a></li>
+          </ul>
+        </div>
+        <!-- Information -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-cyan-400">معلومات</h3>
+          <ul class="space-y-2">
+            <li><a href="#why-us" class="hover:text-cyan-400 transition">من نحن</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition">الشروط والأحكام</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition">سياسة الخصوصية</a></li>
+            <li><a href="#before-after" class="hover:text-cyan-400 transition">الضمان</a></li>
+            <li><a href="#testimonials" class="hover:text-cyan-400 transition">الأسئلة الشائعة</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-cyan-400">اتصل بنا</h3>
+          <p class="mb-1"><strong>العنوان:</strong> القطاع 3، بوخارست، رومانيا</p>
+          <p class="mb-1"><strong>الهاتف:</strong> +40 741 318 528</p>
+          <p class="mb-1"><strong>البريد الإلكتروني:</strong> contact@repairmaster.ro</p>
+          <p class="mb-1"><strong>ساعات العمل:</strong> الاثنين - الأحد: 18:00 - 22:00</p>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center border-t border-gray-800 pt-6">
+        <p class="text-sm text-gray-400 mb-2 md:mb-0">© 2023 ريبيير ماستر. جميع الحقوق محفوظة.</p>
+        <div class="flex gap-3">
+          <span class="text-2xl" aria-label="بطاقة">💳</span>
+          <span class="text-2xl" aria-label="نقدًا">💰</span>
+          <span class="text-2xl" aria-label="بنك">🏦</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky WhatsApp/Call Button -->
+  <div class="fixed bottom-4 left-4 z-50 flex flex-col gap-3">
+    <a href="https://wa.me/40741318528" target="_blank" aria-label="واتساب" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A12 12 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.15 1.6 5.97L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zM12 22c-1.85 0-3.63-.5-5.18-1.44l-.37-.22-3.67.96.98-3.58-.24-.37A9.94 9.94 0 0 1 2 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.2-7.8c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.34.42-.51.14-.17.18-.29.28-.48.09-.19.05-.36-.02-.5-.07-.14-.61-1.47-.84-2.01-.22-.54-.45-.47-.61-.48-.16-.01-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.27-1 1-1 2.43 0 1.43 1.03 2.81 1.18 3 .15.19 2.03 3.1 4.93 4.23.69.3 1.23.48 1.65.61.69.22 1.32.19 1.81.12.55-.08 1.65-.67 1.89-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
+    </a>
+    <a href="tel:+40741318528" aria-label="اتصال" class="bg-cyan-600 hover:bg-cyan-700 text-white p-4 rounded-full shadow-lg transition">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3.08 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.13 1.13.37 2.22.72 3.26a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c1.04.35 2.13.59 3.26.72A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+
+  <!-- Toastify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <!-- SwiperJS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- AOS.js -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Main JS -->
+  <script src="../script.js"></script>
+</body>
+</html> 

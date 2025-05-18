@@ -1,823 +1,1623 @@
-<link rel="stylesheet" href="RepairService.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RepairMaster - Professional Repair Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base styles */
+    :root {
+      --background: #ffffff;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --popover: #ffffff;
+      --popover-foreground: #0f172a;
+      --primary: #3b82f6;
+      --primary-foreground: #f8fafc;
+      --secondary: #f1f5f9;
+      --secondary-foreground: #1e293b;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --accent: #f1f5f9;
+      --accent-foreground: #1e293b;
+      --destructive: #ef4444;
+      --destructive-foreground: #f8fafc;
+      --border: #e2e8f0;
+      --input: #e2e8f0;
+      --ring: #3b82f6;
+      --radius: 0.5rem;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-    
-    
-    Repair Service
+    .dark {
+      --background: #0f172a;
+      --foreground: #f8fafc;
+      --card: #0f172a;
+      --card-foreground: #f8fafc;
+      --popover: #0f172a;
+      --popover-foreground: #f8fafc;
+      --primary: #3b82f6;
+      --primary-foreground: #0f172a;
+      --secondary: #1e293b;
+      --secondary-foreground: #f8fafc;
+      --muted: #1e293b;
+      --muted-foreground: #94a3b8;
+      --accent: #1e293b;
+      --accent-foreground: #f8fafc;
+      --destructive: #7f1d1d;
+      --destructive-foreground: #f8fafc;
+      --border: #1e293b;
+      --input: #1e293b;
+      --ring: #3b82f6;
+    }
 
-    <header>
-        <div class="container header-container">
-            <div class="logo">Repair<span>Service</span></div>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+
+    .space-x-4 > * + * {
+      margin-left: 1rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    .rounded-lg {
+      border-radius: var(--radius);
+    }
+
+    .border {
+      border: 1px solid var(--border);
+    }
+
+    .border-t {
+      border-top: 1px solid var(--border);
+    }
+
+    .border-b {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shadow-sm {
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .shadow-xl {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Typography */
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .text-3xl {
+      font-size: 1.875rem;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .text-muted-foreground {
+      color: var(--muted-foreground);
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .text-green-600 {
+      color: #16a34a;
+    }
+
+    /* Components */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: color-mix(in srgb, var(--primary) 90%, black);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--foreground);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--foreground);
+      border: none;
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--accent);
+    }
+
+    .btn-icon {
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .btn-lg {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+
+    .card {
+      background-color: var(--card);
+      color: var(--card-foreground);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    .card-content {
+      padding: 1rem 1.5rem;
+    }
+
+    .card-footer {
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--input);
+      background-color: transparent;
+      color: var(--foreground);
+    }
+
+    .input:focus {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--input);
+      background-color: transparent;
+      color: var(--foreground);
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .textarea:focus {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--input);
+      background-color: transparent;
+      color: var(--foreground);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 1rem;
+    }
+
+    .select:focus {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table th {
+      font-weight: 600;
+      background-color: var(--muted);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .tabs-list {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      padding: 0.75rem 1rem;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .tab[aria-selected="true"] {
+      border-bottom-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .tab-content {
+      padding: 1rem 0;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 10;
+      min-width: 8rem;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background-color: var(--popover);
+      color: var(--popover-foreground);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: var(--radius);
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--accent);
+    }
+
+    .dropdown-item.active {
+      background-color: var(--accent);
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background-color: color-mix(in srgb, var(--background) 95%, transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      height: 4rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+
+    .mobile-menu .nav-link {
+      padding: 0.5rem 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 7rem;
+      background: linear-gradient(to bottom, var(--background), var(--muted));
+    }
+
+    .hero-content {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .hero-image {
+      position: relative;
+      width: 100%;
+      max-width: 28rem;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 4rem 0;
+      background-color: var(--background);
+    }
+
+    .service-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    /* Social Proof */
+    .social-proof {
+      padding: 3rem 0;
+      background-color: var(--muted);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 4rem 0;
+      background-color: var(--background);
+    }
+
+    .star {
+      color: var(--muted-foreground);
+    }
+
+    .star.filled {
+      color: var(--primary);
+    }
+
+    /* Pricing */
+    .pricing {
+      padding: 4rem 0;
+      background-color: var(--muted);
+    }
+
+    /* Contact */
+    .contact {
+      padding: 4rem 0;
+      background-color: var(--background);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 0;
+      background-color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    /* RTL Support */
+    [dir="rtl"] .flex-row {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .text-left {
+      text-align: right;
+    }
+
+    [dir="rtl"] .text-right {
+      text-align: left;
+    }
+
+    [dir="rtl"] .space-x-4 > * + * {
+      margin-left: 0;
+      margin-right: 1rem;
+    }
+
+    [dir="rtl"] .select {
+      background-position: left 0.5rem center;
+      padding-right: 0.5rem;
+      padding-left: 2rem;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="flex items-center gap-2">
+          <a href="/" class="flex items-center gap-2">
+            <span class="text-xl font-bold">RepairMaster</span>
+          </a>
         </div>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="badge-container">
-                        <div class="badge">
-                            <span class="badge-icon">🔧</span>
-                            <span>3+ ani experiență</span>
-                        </div>
-                        <div class="badge">
-                            <span class="badge-icon">📱</span>
-                            <span>Răspuns în 2h</span>
-                        </div>
-                        <div class="badge">
-                            <span class="badge-icon">🛠️</span>
-                            <span>Garanție 6 luni</span>
-                        </div>
-                    </div>
-                    <h1>Reparăm rapid. <span>Garanție inclusă.</span> Fără taxe ascunse.</h1>
-                    <p>Servicii profesionale de reparații electronice și aer condiționat în București, cu răspuns rapid și calitate garantată.</p>
-                    <div class="hero-buttons">
-                        <a href="tel:+40741318528" class="btn btn-primary">📱 Sună acum (0741 318 528)</a>
-                        <a href="https://wa.me/40741318528" class="btn btn-secondary">💬 WhatsApp</a>
-                    </div>
-                </div>
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav nav">
+          <a href="#services" class="nav-link" data-lang="navbar.services">Services</a>
+          <a href="#pricing" class="nav-link" data-lang="navbar.pricing">Pricing</a>
+          <a href="#testimonials" class="nav-link" data-lang="navbar.testimonials">Testimonials</a>
+          <a href="#contact" class="nav-link" data-lang="navbar.contact">Contact</a>
+          
+          <!-- Language Switcher -->
+          <div class="dropdown">
+            <button class="btn btn-ghost btn-icon language-toggle">
+              <i class="fas fa-globe"></i>
+            </button>
+            <div class="dropdown-content language-dropdown">
+              <div class="dropdown-item" data-lang="en">English</div>
+              <div class="dropdown-item" data-lang="ro">Română</div>
+              <div class="dropdown-item" data-lang="ar">العربية</div>
             </div>
-        </section>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button class="btn btn-ghost btn-icon theme-toggle">
+            <i class="fas fa-sun light-icon"></i>
+            <i class="fas fa-moon dark-icon" style="display: none;"></i>
+          </button>
+        </nav>
 
-        <!-- Trust Badges Strip -->
-        <section class="trust-badges-strip">
-            <div class="container">
-                <div class="trust-badges-strip-grid">
-                    <div class="trust-badge-item">
-                        <span class="trust-badge-icon">✅</span>
-                        <span class="trust-badge-text">3+ ani experiență</span>
-                    </div>
-                    <div class="trust-badge-item">
-                        <span class="trust-badge-icon">🔒</span>
-                        <span class="trust-badge-text">Garanție inclusă</span>
-                    </div>
-                    <div class="trust-badge-item">
-                        <span class="trust-badge-icon">🏠</span>
-                        <span class="trust-badge-text">Intervenim la domiciliu</span>
-                    </div>
-                    <div class="trust-badge-item">
-                        <span class="trust-badge-icon">🕙</span>
-                        <span class="trust-badge-text">Disponibil seara și în weekend</span>
-                    </div>
-                </div>
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav flex items-center gap-4">
+          <!-- Language Switcher -->
+          <div class="dropdown">
+            <button class="btn btn-ghost btn-icon language-toggle">
+              <i class="fas fa-globe"></i>
+            </button>
+            <div class="dropdown-content language-dropdown">
+              <div class="dropdown-item" data-lang="en">English</div>
+              <div class="dropdown-item" data-lang="ro">Română</div>
+              <div class="dropdown-item" data-lang="ar">العربية</div>
             </div>
-        </section>
-
-        <!-- Working Hours Section -->
-        <section class="working-hours-section">
-            <div class="container">
-                <div class="working-hours-container">
-                    <div class="working-hours-info">
-                        <h3>📞 Program și Contact:</h3>
-                        <p class="working-hours-text">Program: Luni - Duminică, 18:00 - 22:00</p>
-                        <p class="working-hours-text">Telefon: <a href="tel:+40741318528">📞 +40 741 318 528</a></p>
-                    </div>
-                    <div class="working-hours-cta">
-                        <a href="https://wa.me/40741318528" class="working-hours-button">
-                            <span>💬</span>
-                            <span>Click aici să ne scrii pe WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services-section" id="services">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Serviciile Noastre</h2>
-                    <p>Oferim servicii complete de reparații și întreținere pentru aparate electronice și sisteme de climatizare</p>
-                </div>
-
-                <div class="services-grid">
-                    <!-- Service Card 1 -->
-                    <div class="service-card">
-                        <div class="service-icon-container">
-                            <span class="service-icon">📺</span>
-                        </div>
-                        <h3>Reparații TV</h3>
-                        <p>Reparăm toate tipurile de televizoare LED, LCD și Smart TV</p>
-                        <div class="service-details">
-                            Detalii și prețuri
-                            <div class="details-content">
-                                <p class="pricing">Preț: de la 150 lei</p>
-                                <p class="details-text">Diagnosticare gratuită. Reparăm probleme de imagine, sunet, backlight, plăci electronice. Garanție 6 luni pentru toate reparațiile.</p>
-                                
-                                <div class="service-includes">
-                                    <h4>Probleme frecvente rezolvate:</h4>
-                                    <ul>
-                                        <li>Probleme de display (imagine întunecată, linii, pete)</li>
-                                        <li>Probleme de sunet (fără sunet, distorsiuni)</li>
-                                        <li>Probleme de alimentare (nu pornește, se oprește)</li>
-                                        <li>Probleme Smart TV (aplicații, conexiune)</li>
-                                        <li>Înlocuire backlight și componente</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare%20pentru%20reparație%20TV" class="quick-book">
-                            <span>📅</span>
-                            <span>Programează acum</span>
-                        </a>
-                    </div>
-
-                    <!-- Service Card 2 -->
-                    <div class="service-card">
-                        <div class="service-icon-container">
-                            <span class="service-icon">💨</span>
-                        </div>
-                        <h3>Curățare AC</h3>
-                        <p>Curățare profesională și igienizare completă pentru aer condiționat</p>
-                        <div class="service-details">
-                            Detalii și prețuri
-                            <div class="details-content">
-                                <p class="pricing">Preț: de la 100 lei</p>
-                                <p class="details-text">Curățare completă cu husă specială, igienizare, verificare freon. Serviciu disponibil pentru toate mărcile și modelele.</p>
-                                
-                                <div class="service-includes">
-                                    <h4>Serviciul include:</h4>
-                                    <ul>
-                                        <li>Curățare filtre și unitate interioară</li>
-                                        <li>Igienizare cu soluții profesionale</li>
-                                        <li>Verificare nivel freon</li>
-                                        <li>Curățare unitate exterioară</li>
-                                        <li>Verificare funcționare optimă</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare%20pentru%20curățare%20AC" class="quick-book">
-                            <span>📅</span>
-                            <span>Programează acum</span>
-                        </a>
-                    </div>
-
-                    <!-- Service Card 3 -->
-                    <div class="service-card">
-                        <div class="service-icon-container">
-                            <span class="service-icon">🌡️</span>
-                        </div>
-                        <h3>Montaj AC</h3>
-                        <p>Instalare profesională de aparate de aer condiționat</p>
-                        <div class="service-details">
-                            Detalii și prețuri
-                            <div class="details-content">
-                                <p class="pricing">Preț: de la 300 lei</p>
-                                <p class="details-text">Montaj complet inclusiv perforare, fixare suport, conectare. Preț în funcție de BTU și complexitatea instalării.</p>
-                                
-                                <div class="service-includes">
-                                    <h4>Serviciul include:</h4>
-                                    <ul>
-                                        <li>Montaj unitate interioară și exterioară</li>
-                                        <li>Perforare perete și trecere traseu frigorific</li>
-                                        <li>Conectare electrică și testare</li>
-                                        <li>Verificare etanșeitate</li>
-                                        <li>Instrucțiuni de utilizare</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare%20pentru%20montaj%20AC" class="quick-book">
-                            <span>📅</span>
-                            <span>Programează acum</span>
-                        </a>
-                    </div>
-
-                    <!-- Service Card 4 -->
-                    <div class="service-card">
-                        <div class="service-icon-container">
-                            <span class="service-icon">🛠️</span>
-                        </div>
-                        <h3>Verificare Freon</h3>
-                        <p>Testare și completare freon pentru performanță optimă</p>
-                        <div class="service-details">
-                            Detalii și prețuri
-                            <div class="details-content">
-                                <p class="pricing">Preț: de la 80 lei</p>
-                                <p class="details-text">Verificare nivel freon, detectare scurgeri, completare. Folosim doar freon de calitate superioară, compatibil cu modelul dvs.</p>
-                                
-                                <div class="service-includes">
-                                    <h4>Serviciul include:</h4>
-                                    <ul>
-                                        <li>Verificare presiune freon</li>
-                                        <li>Detectare scurgeri</li>
-                                        <li>Completare freon (dacă este necesar)</li>
-                                        <li>Verificare funcționare</li>
-                                        <li>Recomandări pentru eficiență maximă</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare%20pentru%20verificare%20freon" class="quick-book">
-                            <span>📅</span>
-                            <span>Programează acum</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Social Media Trust Section -->
-        <section class="social-media-trust">
-            <div class="container">
-                <div class="social-media-content">
-                    <h3>Vezi clipuri reale de reparații pe:</h3>
-                    <div class="social-media-buttons">
-                        <a href="https://www.tiktok.com/@repairversehub" class="social-media-button tiktok">
-                            <span class="social-icon">🎥</span>
-                            <span>TikTok @repairversehub</span>
-                        </a>
-                        <a href="https://www.instagram.com/repairversehub" class="social-media-button instagram">
-                            <span class="social-icon">📸</span>
-                            <span>Instagram @repairversehub</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Service Area Highlight -->
-        <section class="service-area-highlight">
-            <div class="container">
-                <div class="service-area-content">
-                    <span class="service-area-icon">🏠</span>
-                    <div class="service-area-text">
-                        <h3>Intervenim la domiciliu în București și împrejurimi</h3>
-                        <p>Acoperim rapid zonele: Titan, Dristor, Pantelimon, Berceni și toate sectoarele din București</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us Section -->
-        <section class="why-choose-us-section" id="why-us">
-            <div class="container">
-                <div class="section-title">
-                    <h2>De ce să alegi RepairVerse?</h2>
-                    <p>Oferim servicii de calitate cu garanție și transparență totală</p>
-                </div>
-
-                <div class="why-choose-grid">
-                    <div class="why-choose-item">
-                        <div class="why-choose-icon">✅</div>
-                        <div class="why-choose-text">3+ ani experiență în reparații electronice</div>
-                    </div>
-                    <div class="why-choose-item">
-                        <div class="why-choose-icon">🔒</div>
-                        <div class="why-choose-text">Garanție inclusă pentru fiecare intervenție</div>
-                    </div>
-                    <div class="why-choose-item">
-                        <div class="why-choose-icon">🏠</div>
-                        <div class="why-choose-text">Venim direct la domiciliul clientului</div>
-                    </div>
-                    <div class="why-choose-item">
-                        <div class="why-choose-icon">💬</div>
-                        <div class="why-choose-text">Comunicare în română, arabă și engleză</div>
-                    </div>
-                    <div class="why-choose-item">
-                        <div class="why-choose-icon">📍</div>
-                        <div class="why-choose-text">București, Sector 3 și zonele apropiate</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Before-After Section -->
-        <section class="before-after-section" id="before-after">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Înainte și După</h2>
-                    <p>Vezi transformările realizate de echipa noastră de profesioniști</p>
-                </div>
-
-                <div class="before-after-grid">
-                    <!-- Before-After Item 1 -->
-                    <div class="before-after-item">
-                        <h3>Reparație TV - Înlocuire Backlight</h3>
-                        <p>Televizor cu probleme de iluminare, reparat prin înlocuirea completă a sistemului de backlight.</p>
-                        
-                        <div class="slider-container">
-                            <div class="before-image">
-                                <img src="https://placehold.co/600x400/BDC3C7/34495E?text=TV+inainte" alt="TV înainte de reparație">
-                                <div class="image-label before-label">Înainte</div>
-                            </div>
-                            <div class="after-image" style="width: 50%">
-                                <img src="https://placehold.co/600x400/ECF0F1/34495E?text=TV+dupa" alt="TV după reparație">
-                                <div class="image-label after-label">După</div>
-                                <div class="warranty-badge">
-                                    <span>🏆</span>
-                                    <span>Garanție 6 luni</span>
-                                </div>
-                            </div>
-                            <div class="slider-divider" style="left: 50%">
-                                <div class="slider-button"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Before-After Item 2 -->
-                    <div class="before-after-item">
-                        <h3>Curățare Aer Condiționat</h3>
-                        <p>Unitate de aer condiționat curățată profesional pentru eficiență maximă și aer curat.</p>
-                        
-                        <div class="slider-container">
-                            <div class="before-image">
-                                <img src="https://placehold.co/600x400/BDC3C7/34495E?text=AC+inainte" alt="AC înainte de curățare">
-                                <div class="image-label before-label">Înainte</div>
-                            </div>
-                            <div class="after-image" style="width: 50%">
-                                <img src="https://placehold.co/600x400/ECF0F1/34495E?text=AC+dupa" alt="AC după curățare">
-                                <div class="image-label after-label">După</div>
-                                <div class="warranty-badge">
-                                    <span>🏆</span>
-                                    <span>Garanție 6 luni</span>
-                                </div>
-                            </div>
-                            <div class="slider-divider" style="left: 50%">
-                                <div class="slider-button"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-quote">
-                    <p>"Toate reparațiile noastre includ garanție de până la 6 luni și folosim doar piese de calitate."</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Trust Badges Section -->
-        <section class="trust-badges-section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>De Ce Să Ne Alegi</h2>
-                    <p>Oferim servicii de calitate cu garanție și transparență totală</p>
-                </div>
-
-                <div class="trust-badges-grid">
-                    <!-- Trust Badge 1 -->
-                    <div class="trust-badge">
-                        <div class="badge-icon-container">
-                            <span class="badge-icon">💳</span>
-                        </div>
-                        <h3>Plată la finalizare</h3>
-                        <p>Plătești doar după ce ești mulțumit de rezultat</p>
-                        <div class="count-up">100%</div>
-                    </div>
-
-                    <!-- Trust Badge 2 -->
-                    <div class="trust-badge">
-                        <div class="badge-icon-container">
-                            <span class="badge-icon">⏱️</span>
-                        </div>
-                        <h3>Răspuns rapid</h3>
-                        <p>Ajungem la tine în maxim</p>
-                        <div class="count-up">2h</div>
-                    </div>
-
-                    <!-- Trust Badge 3 -->
-                    <div class="trust-badge">
-                        <div class="badge-icon-container">
-                            <span class="badge-icon">🏆</span>
-                        </div>
-                        <h3>Garanție inclusă</h3>
-                        <p>Toate serviciile includ garanție de</p>
-                        <div class="count-up">6 luni</div>
-                    </div>
-
-                    <!-- Trust Badge 4 -->
-                    <div class="trust-badge">
-                        <div class="badge-icon-container">
-                            <span class="badge-icon">👍</span>
-                        </div>
-                        <h3>Clienți mulțumiți</h3>
-                        <p>Rata de satisfacție a clienților noștri</p>
-                        <div class="count-up">95%</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonial Section -->
-        <section class="testimonial-section" id="testimonials">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Ce Spun Clienții Noștri</h2>
-                    <p>Descoperă experiențele clienților care au apelat la serviciile noastre de reparații și întreținere</p>
-                </div>
-
-                <div class="testimonial-carousel">
-                    <div class="progress-bar">
-                        <div class="progress-indicator"></div>
-                    </div>
-
-                    <div class="carousel-container">
-                        <div class="carousel-track">
-                            <!-- Slide 1 -->
-                            <div class="carousel-slide">
-                                <div class="testimonial-main">
-                                    <div class="testimonial-content">
-                                        <div class="testimonial-profile">
-                                            <div class="profile-image">
-                                                <img src="https://placehold.co/80x80/ECF0F1/34495E?text=AP" alt="Alexandru Popescu">
-                                            </div>
-                                            <div class="profile-info">
-                                                <h4>Alexandru P.</h4>
-                                                <p class="role">Reparație TV Samsung</p>
-                                                <p class="location">Sector 3, București</p>
-                                                <div class="rating">
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <blockquote>
-                                                <span class="quote-mark open">"</span>
-                                                Serviciu excelent! Mi-au reparat televizorul Samsung în aceeași zi. Profesionalism și calitate la un preț corect. Recomand cu încredere!
-                                                <span class="quote-mark close">"</span>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Slide 2 -->
-                            <div class="carousel-slide">
-                                <div class="testimonial-main">
-                                    <div class="testimonial-content">
-                                        <div class="testimonial-profile">
-                                            <div class="profile-image">
-                                                <img src="https://placehold.co/80x80/ECF0F1/34495E?text=AM" alt="Andrei Munteanu">
-                                            </div>
-                                            <div class="profile-info">
-                                                <h4>Andrei M.</h4>
-                                                <p class="role">Reparație TV LG</p>
-                                                <p class="location">Sector 2, București</p>
-                                                <div class="rating">
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                    <span class="star filled">★</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-text">
-                                            <blockquote>
-                                                <span class="quote-mark open">"</span>
-                                                Reparație rapidă și de calitate pentru televizorul meu LG. Recomand cu încredere! Au venit la domiciliu și au rezolvat problema în mai puțin de o oră.
-                                                <span class="quote-mark close">"</span>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Additional Testimonials -->
-                    <div class="testimonial-grid">
-                        <!-- Testimonial Card 1 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">
-                                    <span>AM</span>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Andrei M.</h4>
-                                    <p>Reparație TV LG</p>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                            </div>
-                            <blockquote>"Reparație rapidă și de calitate pentru televizorul meu LG. Recomand cu încredere!"</blockquote>
-                        </div>
-
-                        <!-- Testimonial Card 2 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">
-                                    <span>GS</span>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Gabriela S.</h4>
-                                    <p>Curățare AC Daikin</p>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star empty">★</span>
-                            </div>
-                            <blockquote>"Serviciu prompt și profesionist. Aerul condiționat funcționează perfect acum."</blockquote>
-                        </div>
-
-                        <!-- Testimonial Card 3 -->
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">
-                                    <span>MD</span>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Mihai D.</h4>
-                                    <p>Montaj TV pe perete</p>
-                                </div>
-                            </div>
-                            <div class="rating">
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                            </div>
-                            <blockquote>"Montaj impecabil pentru noul meu televizor, inclusiv configurare și explicații detaliate."</blockquote>
-                        </div>
-                    </div>
-
-                    <!-- Call to action -->
-                    <div class="testimonial-cta">
-                        <p>Alătură-te celor peste 500 de clienți mulțumiți</p>
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare" class="btn btn-primary">Programează o intervenție</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Table Section -->
-        <section class="pricing-table-section" id="pricing">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Lista de Prețuri</h2>
-                    <p>Prețuri transparente pentru toate serviciile noastre</p>
-                </div>
-
-                <div class="pricing-tabs">
-                    <div class="pricing-tab-labels">
-                        <div>Reparații TV</div>
-                        <div>Servicii AC</div>
-                    </div>
-                    
-                    <div class="pricing-tables-container">
-                        <!-- TV Pricing Table -->
-                        <div class="pricing-table tv-pricing">
-                            <div class="pricing-table-header">
-                                <div class="pricing-header-cell">Serviciu</div>
-                                <div class="pricing-header-cell">Dimensiune</div>
-                                <div class="pricing-header-cell">Preț Standard</div>
-                                <div class="pricing-header-cell">Preț Promo</div>
-                                <div class="pricing-header-cell">Economie</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Reparații TV</div>
-                                <div class="pricing-cell">32"</div>
-                                <div class="pricing-cell">250 lei</div>
-                                <div class="pricing-cell highlight">198 lei</div>
-                                <div class="pricing-cell savings">52 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Reparații TV</div>
-                                <div class="pricing-cell">43"</div>
-                                <div class="pricing-cell">350 lei</div>
-                                <div class="pricing-cell highlight">280 lei</div>
-                                <div class="pricing-cell savings">70 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Reparații TV</div>
-                                <div class="pricing-cell">50"</div>
-                                <div class="pricing-cell">450 lei</div>
-                                <div class="pricing-cell highlight">360 lei</div>
-                                <div class="pricing-cell savings">90 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Reparații TV</div>
-                                <div class="pricing-cell">55"</div>
-                                <div class="pricing-cell">550 lei</div>
-                                <div class="pricing-cell highlight">440 lei</div>
-                                <div class="pricing-cell savings">110 lei (20%)</div>
-                            </div>
-                        </div>
-                        
-                        <!-- AC Pricing Table -->
-                        <div class="pricing-table ac-pricing">
-                            <div class="pricing-table-header">
-                                <div class="pricing-header-cell">Serviciu</div>
-                                <div class="pricing-header-cell">Tip Unitate</div>
-                                <div class="pricing-header-cell">Preț Standard</div>
-                                <div class="pricing-header-cell">Preț Promo</div>
-                                <div class="pricing-header-cell">Economie</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Curățare AC</div>
-                                <div class="pricing-cell">9000 BTU</div>
-                                <div class="pricing-cell">150 lei</div>
-                                <div class="pricing-cell highlight">120 lei</div>
-                                <div class="pricing-cell savings">30 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Curățare AC</div>
-                                <div class="pricing-cell">12000 BTU</div>
-                                <div class="pricing-cell">180 lei</div>
-                                <div class="pricing-cell highlight">144 lei</div>
-                                <div class="pricing-cell savings">36 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Curățare AC</div>
-                                <div class="pricing-cell">18000 BTU</div>
-                                <div class="pricing-cell">220 lei</div>
-                                <div class="pricing-cell highlight">176 lei</div>
-                                <div class="pricing-cell savings">44 lei (20%)</div>
-                            </div>
-                            <div class="pricing-table-row">
-                                <div class="pricing-cell">Curățare AC</div>
-                                <div class="pricing-cell">24000 BTU</div>
-                                <div class="pricing-cell">250 lei</div>
-                                <div class="pricing-cell highlight">200 lei</div>
-                                <div class="pricing-cell savings">50 lei (20%)</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-cta">
-                        <a href="https://wa.me/40741318528?text=Doresc%20o%20programare" class="btn btn-primary">
-                            <span>📅</span>
-                            <span>Programează acum</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-              
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <div class="container">
-                <div class="contact-header">
-                    <div class="header-text">
-                        <h2>Contactează-ne</h2>
-                        <p>Completează formularul și te vom contacta în cel mai scurt timp</p>
-                    </div>
-                </div>
-
-                <div class="contact-container">
-                    <div class="contact-sidebar">
-                        <h3>Informații de contact</h3>
-                        
-                        <div class="contact-info">
-                            <div class="info-item">
-                                <h4>Adresa noastră</h4>
-                                <p>Sector 3, București, România</p>
-                            </div>
-                            <div class="info-item">
-                                <h4>Telefon</h4>
-                                <p>+40 741 318 528</p>
-                            </div>
-                            <div class="info-item">
-                                <h4>Email</h4>
-                                <p>contact@repairmaster.ro</p>
-                            </div>
-                            <div class="info-item">
-                                <h4>Limbi vorbite</h4>
-                                <p>Vorbim română, arabă și engleză</p>
-                            </div>
-                            <div class="info-item">
-                                <h4>Program</h4>
-                                <p>Luni - Duminică, 18:00 - 22:00</p>
-                            </div>
-                            <div class="info-item">
-                                <h4>Zonă de acoperire</h4>
-                                <p>Disponibil în București și împrejurimi</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-buttons">
-                            <a href="tel:+40741318528" class="contact-button call">
-                                <span>📱</span>
-                                <span>Sună acum</span>
-                            </a>
-                            <a href="https://wa.me/40741318528" class="contact-button whatsapp">
-                                <span>💬</span>
-                                <span>WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="contact-form">
-                        
-                            <div class="form-group">
-                                Nume și prenume <span class="required">*</span>
-                                
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    Adresa de email
-                                    
-                                </div>
-                                <div class="form-group">
-                                    Număr de telefon
-                                    
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                Mesajul tău
-                                
-                            </div>
-
-                            Trimite mesajul
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column footer-logo">
-                    <h2>RepairMaster</h2>
-                    <p>Servicii profesionale de reparații electronice și aer condiționat în București, cu răspuns rapid și calitate garantată.</p>
-                    <div class="footer-social">
-                        <a href="tel:+40741318528" class="social-icon">📱</a>
-                        <a href="https://wa.me/40741318528" class="social-icon">💬</a>
-                        <a href="mailto:contact@repairmaster.ro" class="social-icon">📧</a>
-                        <a href="https://www.instagram.com/repairversehub" class="social-icon">📸</a>
-                        <a href="https://www.tiktok.com/@repairversehub" class="social-icon">🎥</a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Servicii</h3>
-                    <ul class="footer-links">
-                        <li><a href="#services">Reparații TV</a></li>
-                        <li><a href="#services">Curățare AC</a></li>
-                        <li><a href="#services">Montaj AC</a></li>
-                        <li><a href="#services">Verificare Freon</a></li>
-                        <li><a href="#services">Diagnosticare</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Informații</h3>
-                    <ul class="footer-links">
-                        <li><a href="#why-us">Despre noi</a></li>
-                        <li><a href="#">Termeni și condiții</a></li>
-                        <li><a href="#">Politica de confidențialitate</a></li>
-                        <li><a href="#before-after">Garanție</a></li>
-                        <li><a href="#testimonials">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column footer-contact">
-                    <h3>Contact</h3>
-                    <p><strong>Adresă:</strong> Sector 3, București, România</p>
-                    <p><strong>Telefon:</strong> +40 741 318 528</p>
-                    <p><strong>Email:</strong> contact@repairmaster.ro</p>
-                    <p><strong>Program:</strong> Luni - Duminică: 18:00 - 22:00</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2023 RepairMaster. Toate drepturile rezervate.</p>
-                <div class="payment-methods">
-                    <span class="payment-icon">💳</span>
-                    <span class="payment-icon">💰</span>
-                    <span class="payment-icon">🏦</span>
-                </div>
-            </div>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <button class="btn btn-ghost btn-icon theme-toggle">
+            <i class="fas fa-sun light-icon"></i>
+            <i class="fas fa-moon dark-icon" style="display: none;"></i>
+          </button>
+          
+          <!-- Mobile Menu Toggle -->
+          <button class="btn btn-ghost btn-icon mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
-    </footer>
+      </div>
 
-    <!-- Emergency Contact Banner -->
-    <div class="emergency-banner">
-        <div class="banner-content">
-            <div class="availability-indicator">
-                <div class="status-dot available"></div>
-                <div class="status-text">
-                    <p>Disponibil acum - Răspuns în max. 2h</p>
-                    <p class="hours-info">
-                        <span>⏱️</span>
-                        Program: Luni - Duminică, 18:00 - 22:00
-                    </p>
-                </div>
-            </div>
-            <div class="banner-actions">
-                <a href="tel:+40741318528" class="action-button call">📱</a>
-                <a href="https://wa.me/40741318528" class="action-button whatsapp">💬</a>
-                <span>▲</span>
-            </div>
-        </div>
+      <!-- Mobile Menu -->
+      <div class="mobile-menu">
+        <a href="#services" class="nav-link" data-lang="navbar.services">Services</a>
+        <a href="#pricing" class="nav-link" data-lang="navbar.pricing">Pricing</a>
+        <a href="#testimonials" class="nav-link" data-lang="navbar.testimonials">Testimonials</a>
+        <a href="#contact" class="nav-link" data-lang="navbar.contact">Contact</a>
+      </div>
     </div>
+  </header>
 
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="space-y-4">
+            <h1 class="text-3xl font-bold" data-lang="hero.title">Fast, Reliable Repairs for Your Home & Office</h1>
+            <p class="text-muted-foreground" data-lang="hero.subtitle">We fix electronics and air conditioning in Bucharest. Transparent pricing, 6-month warranty, and rapid response.</p>
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <a href="#contact" class="btn btn-primary btn-lg" data-lang="hero.cta">Book a Service</a>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <div class="hero-image">
+              <img src="https://placehold.co/600x400" alt="Repair technician fixing electronics" data-lang-attr="alt:hero.imageAlt">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <h2 class="text-3xl font-bold" data-lang="services.title">Our Services</h2>
+          <p class="text-muted-foreground" data-lang="services.subtitle">We offer complete repair and maintenance services for electronics and air conditioning systems.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          <!-- TV Repairs -->
+          <div class="card">
+            <div class="card-header">
+              <div class="service-icon">
+                <i class="fas fa-tv"></i>
+              </div>
+              <h3 class="text-xl font-medium text-center" data-lang="services.tv.title">TV Repairs</h3>
+            </div>
+            <div class="card-content">
+              <p class="text-center text-muted-foreground" data-lang="services.tv.description">We repair all types of LED, LCD, and Smart TVs.</p>
+            </div>
+            <div class="card-footer flex flex-col gap-2">
+              <button class="btn btn-outline w-full" data-lang="services.details">Details & Pricing</button>
+              <a href="#contact" class="btn btn-primary w-full" data-lang="services.book">Book Now</a>
+            </div>
+          </div>
+
+          <!-- AC Cleaning -->
+          <div class="card">
+            <div class="card-header">
+              <div class="service-icon">
+                <i class="fas fa-wind"></i>
+              </div>
+              <h3 class="text-xl font-medium text-center" data-lang="services.acCleaning.title">AC Cleaning</h3>
+            </div>
+            <div class="card-content">
+              <p class="text-center text-muted-foreground" data-lang="services.acCleaning.description">Professional cleaning and full sanitization for air conditioners.</p>
+            </div>
+            <div class="card-footer flex flex-col gap-2">
+              <button class="btn btn-outline w-full" data-lang="services.details">Details & Pricing</button>
+              <a href="#contact" class="btn btn-primary w-full" data-lang="services.book">Book Now</a>
+            </div>
+          </div>
+
+          <!-- AC Installation -->
+          <div class="card">
+            <div class="card-header">
+              <div class="service-icon">
+                <i class="fas fa-temperature-high"></i>
+              </div>
+              <h3 class="text-xl font-medium text-center" data-lang="services.acInstallation.title">AC Installation</h3>
+            </div>
+            <div class="card-content">
+              <p class="text-center text-muted-foreground" data-lang="services.acInstallation.description">Professional installation of air conditioning units.</p>
+            </div>
+            <div class="card-footer flex flex-col gap-2">
+              <button class="btn btn-outline w-full" data-lang="services.details">Details & Pricing</button>
+              <a href="#contact" class="btn btn-primary w-full" data-lang="services.book">Book Now</a>
+            </div>
+          </div>
+
+          <!-- Freon Check -->
+          <div class="card">
+            <div class="card-header">
+              <div class="service-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h3 class="text-xl font-medium text-center" data-lang="services.freon.title">Freon Check</h3>
+            </div>
+            <div class="card-content">
+              <p class="text-center text-muted-foreground" data-lang="services.freon.description">Testing and refilling freon for optimal performance.</p>
+            </div>
+            <div class="card-footer flex flex-col gap-2">
+              <button class="btn btn-outline w-full" data-lang="services.details">Details & Pricing</button>
+              <a href="#contact" class="btn btn-primary w-full" data-lang="services.book">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+      <div class="container">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <h3 class="text-xl font-medium" data-lang="socialProof.title">See real repair videos on:</h3>
+          <div class="flex flex-wrap justify-center items-center gap-6">
+            <div class="flex items-center gap-2">
+              <i class="fab fa-tiktok"></i>
+              <span class="text-sm font-medium">TikTok @repairversehub</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fab fa-instagram"></i>
+              <span class="text-sm font-medium">Instagram @repairversehub</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <h3 class="text-xl font-bold" data-lang="socialProof.needFast">Need Fast Service?</h3>
+          <p class="mt-2" data-lang="socialProof.callUs">Call us now or book online for a quick response!</p>
+          <p class="mt-2 text-xl font-bold">📞 +40 741 318 528</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <h2 class="text-3xl font-bold" data-lang="testimonials.title">What Our Customers Say</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <!-- Testimonial 1 -->
+          <div class="card">
+            <div class="card-content">
+              <div class="flex mb-2">
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+              </div>
+              <p class="text-muted-foreground" data-lang="testimonials.alex">Excellent service! My Samsung TV was fixed the same day. Professional and fair price.</p>
+            </div>
+            <div class="card-footer">
+              <p class="font-medium">Alexandru P.</p>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="card">
+            <div class="card-content">
+              <div class="flex mb-2">
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+              </div>
+              <p class="text-muted-foreground" data-lang="testimonials.gabriela">Prompt and professional. My AC works perfectly now!</p>
+            </div>
+            <div class="card-footer">
+              <p class="font-medium">Gabriela S.</p>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="card">
+            <div class="card-content">
+              <div class="flex mb-2">
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+                <i class="fas fa-star star filled"></i>
+              </div>
+              <p class="text-muted-foreground" data-lang="testimonials.mihai">Impeccable TV wall mount and setup. Highly recommend!</p>
+            </div>
+            <div class="card-footer">
+              <p class="font-medium">Mihai D.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <h2 class="text-3xl font-bold" data-lang="pricing.title">Pricing List</h2>
+          <p class="text-muted-foreground" data-lang="pricing.subtitle">Transparent prices for all our services</p>
+        </div>
+
+        <div class="mt-12 max-w-4xl mx-auto">
+          <div class="tabs">
+            <div class="tabs-list">
+              <div class="tab" data-tab="tv" aria-selected="true" data-lang="pricing.tvTab">TV Repairs</div>
+              <div class="tab" data-tab="ac" aria-selected="false" data-lang="pricing.acTab">AC Services</div>
+            </div>
+
+            <!-- TV Pricing -->
+            <div class="tab-content" data-tab-content="tv">
+              <div class="card">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th data-lang="pricing.size">Size</th>
+                      <th data-lang="pricing.standardPrice">Standard Price</th>
+                      <th data-lang="pricing.promoPrice">Promo Price</th>
+                      <th data-lang="pricing.savings">Savings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>32"</td>
+                      <td>250 lei</td>
+                      <td class="font-medium">198 lei</td>
+                      <td class="text-green-600">52 lei (20%)</td>
+                    </tr>
+                    <tr>
+                      <td>43"</td>
+                      <td>350 lei</td>
+                      <td class="font-medium">280 lei</td>
+                      <td class="text-green-600">70 lei (20%)</td>
+                    </tr>
+                    <tr>
+                      <td>50"</td>
+                      <td>450 lei</td>
+                      <td class="font-medium">360 lei</td>
+                      <td class="text-green-600">90 lei (20%)</td>
+                    </tr>
+                    <tr>
+                      <td>55"</td>
+                      <td>550 lei</td>
+                      <td class="font-medium">440 lei</td>
+                      <td class="text-green-600">110 lei (20%)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="p-4 flex justify-center">
+                  <a href="#contact" class="btn btn-primary" data-lang="pricing.bookNow">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- AC Pricing -->
+            <div class="tab-content" data-tab-content="ac" style="display: none;">
+              <div class="card">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th data-lang="pricing.service">Service</th>
+                      <th data-lang="pricing.standardPrice">Standard Price</th>
+                      <th data-lang="pricing.promoPrice">Promo Price</th>
+                      <th data-lang="pricing.savings">Savings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-lang="pricing.acCleaning">AC Cleaning</td>
+                      <td>250 lei</td>
+                      <td class="font-medium">200 lei</td>
+                      <td class="text-green-600">50 lei (20%)</td>
+                    </tr>
+                    <tr>
+                      <td data-lang="pricing.acInstallation">AC Installation</td>
+                      <td>450 lei</td>
+                      <td class="font-medium">360 lei</td>
+                      <td class="text-green-600">90 lei (20%)</td>
+                    </tr>
+                    <tr>
+                      <td data-lang="pricing.freonCheck">Freon Check</td>
+                      <td>200 lei</td>
+                      <td class="font-medium">160 lei</td>
+                      <td class="text-green-600">40 lei (20%)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="p-4 flex justify-center">
+                  <a href="#contact" class="btn btn-primary" data-lang="pricing.bookNow">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="flex flex-col items-center justify-center space-y-4 text-center">
+          <h2 class="text-3xl font-bold" data-lang="contact.title">Contact & Booking</h2>
+        </div>
+        <div class="mx-auto max-w-lg mt-8">
+          <form class="grid gap-6">
+            <div class="grid gap-2">
+              <label for="name" class="label" data-lang="contact.name">Name</label>
+              <input id="name" type="text" class="input" placeholder="Your name" data-lang-attr="placeholder:contact.namePlaceholder">
+            </div>
+            <div class="grid gap-2">
+              <label for="email" class="label" data-lang="contact.email">Email</label>
+              <input id="email" type="email" class="input" placeholder="your.email@example.com" data-lang-attr="placeholder:contact.emailPlaceholder">
+            </div>
+            <div class="grid gap-2">
+              <label for="phone" class="label" data-lang="contact.phone">Phone</label>
+              <input id="phone" type="tel" class="input" placeholder="Your phone number" data-lang-attr="placeholder:contact.phonePlaceholder">
+            </div>
+            <div class="grid gap-2">
+              <label for="date" class="label" data-lang="contact.date">Booking Date</label>
+              <input id="date" type="date" class="input">
+            </div>
+            <div class="grid gap-2">
+              <label for="time" class="label" data-lang="contact.time">Time Slot</label>
+              <select id="time" class="select" data-lang-attr="placeholder:contact.selectTime">
+                <option value="" disabled selected data-lang="contact.selectTime">Select a time</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="16:00">04:00 PM</option>
+                <option value="17:00">05:00 PM</option>
+                <option value="18:00">06:00 PM</option>
+                <option value="19:00">07:00 PM</option>
+              </select>
+            </div>
+            <div class="grid gap-2">
+              <label for="message" class="label" data-lang="contact.message">Message</label>
+              <textarea id="message" class="textarea" placeholder="Tell us about your repair needs" data-lang-attr="placeholder:contact.messagePlaceholder"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" data-lang="contact.submit">Send & Book</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="text-lg font-bold mb-4">RepairMaster</h3>
+          <p class="text-sm text-muted-foreground" data-lang="footer.description">Professional electronics and air conditioning repair services in Bucharest, with fast response and guaranteed quality.</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="text-muted-foreground hover:text-foreground">
+              <i class="fas fa-phone"></i>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-foreground">
+              <i class="fas fa-comment"></i>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-foreground">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-foreground">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-foreground">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4" data-lang="footer.servicesTitle">Services</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.services.tv">TV Repairs</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.services.acCleaning">AC Cleaning</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.services.acInstallation">AC Installation</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.services.freon">Freon Check</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.services.diagnostics">Diagnostics</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4" data-lang="footer.infoTitle">Information</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.info.about">About Us</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.info.terms">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.info.privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.info.warranty">Warranty</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-muted-foreground hover:text-foreground" data-lang="footer.info.faq">FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4" data-lang="footer.contactTitle">Contact</h3>
+          <address class="not-italic text-sm text-muted-foreground space-y-2">
+            <p data-lang="footer.address">Address: Sector 3, Bucharest, Romania</p>
+            <p data-lang="footer.phone">Phone: +40 741 318 528</p>
+            <p data-lang="footer.email">Email: contact@repairmaster.ro</p>
+            <p data-lang="footer.hours">Hours: Monday - Sunday: 18:00 - 22:00</p>
+          </address>
+          <div class="flex space-x-4 mt-4">
+            <i class="fas fa-credit-card"></i>
+            <i class="fas fa-wallet"></i>
+            <i class="fas fa-building"></i>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023 RepairMaster. <span data-lang="footer.rights">All rights reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Translations
+    const translations = {
+      en: {
+        navbar: {
+          services: "Services",
+          pricing: "Pricing",
+          testimonials: "Testimonials",
+          contact: "Contact",
+        },
+        hero: {
+          title: "Fast, Reliable Repairs for Your Home & Office",
+          subtitle: "We fix electronics and air conditioning in Bucharest. Transparent pricing, 6-month warranty, and rapid response.",
+          cta: "Book a Service",
+          imageAlt: "Repair technician fixing electronics"
+        },
+        services: {
+          title: "Our Services",
+          subtitle: "We offer complete repair and maintenance services for electronics and air conditioning systems.",
+          tv: {
+            title: "TV Repairs",
+            description: "We repair all types of LED, LCD, and Smart TVs."
+          },
+          acCleaning: {
+            title: "AC Cleaning",
+            description: "Professional cleaning and full sanitization for air conditioners."
+          },
+          acInstallation: {
+            title: "AC Installation",
+            description: "Professional installation of air conditioning units."
+          },
+          freon: {
+            title: "Freon Check",
+            description: "Testing and refilling freon for optimal performance."
+          },
+          details: "Details & Pricing",
+          book: "Book Now"
+        },
+        socialProof: {
+          title: "See real repair videos on:",
+          needFast: "Need Fast Service?",
+          callUs: "Call us now or book online for a quick response!"
+        },
+        testimonials: {
+          title: "What Our Customers Say",
+          alex: "Excellent service! My Samsung TV was fixed the same day. Professional and fair price.",
+          gabriela: "Prompt and professional. My AC works perfectly now!",
+          mihai: "Impeccable TV wall mount and setup. Highly recommend!"
+        },
+        pricing: {
+          title: "Pricing List",
+          subtitle: "Transparent prices for all our services",
+          tvTab: "TV Repairs",
+          acTab: "AC Services",
+          size: "Size",
+          service: "Service",
+          standardPrice: "Standard Price",
+          promoPrice: "Promo Price",
+          savings: "Savings",
+          bookNow: "Book Now",
+          acCleaning: "AC Cleaning",
+          acInstallation: "AC Installation",
+          freonCheck: "Freon Check"
+        },
+        contact: {
+          title: "Contact & Booking",
+          name: "Name",
+          namePlaceholder: "Your name",
+          email: "Email",
+          emailPlaceholder: "your.email@example.com",
+          phone: "Phone",
+          phonePlaceholder: "Your phone number",
+          date: "Booking Date",
+          selectDate: "Select a date",
+          time: "Time Slot",
+          selectTime: "Select a time",
+          message: "Message",
+          messagePlaceholder: "Tell us about your repair needs",
+          submit: "Send & Book"
+        },
+        footer: {
+          description: "Professional electronics and air conditioning repair services in Bucharest, with fast response and guaranteed quality.",
+          servicesTitle: "Services",
+          services: {
+            tv: "TV Repairs",
+            acCleaning: "AC Cleaning",
+            acInstallation: "AC Installation",
+            freon: "Freon Check",
+            diagnostics: "Diagnostics"
+          },
+          infoTitle: "Information",
+          info: {
+            about: "About Us",
+            terms: "Terms & Conditions",
+            privacy: "Privacy Policy",
+            warranty: "Warranty",
+            faq: "FAQ"
+          },
+          contactTitle: "Contact",
+          address: "Address: Sector 3, Bucharest, Romania",
+          phone: "Phone: +40 741 318 528",
+          email: "Email: contact@repairmaster.ro",
+          hours: "Hours: Monday - Sunday: 18:00 - 22:00",
+          rights: "All rights reserved."
+        }
+      },
+      ro: {
+        navbar: {
+          services: "Servicii",
+          pricing: "Prețuri",
+          testimonials: "Testimoniale",
+          contact: "Contact",
+        },
+        hero: {
+          title: "Reparații Rapide și de Încredere pentru Casa și Biroul Tău",
+          subtitle: "Reparăm electronice și aer condiționat în București. Prețuri transparente, garanție de 6 luni și răspuns rapid.",
+          cta: "Programează un Serviciu",
+          imageAlt: "Tehnician reparând electronice"
+        },
+        services: {
+          title: "Serviciile Noastre",
+          subtitle: "Oferim servicii complete de reparații și întreținere pentru electronice și sisteme de aer condiționat.",
+          tv: {
+            title: "Reparații TV",
+            description: "Reparăm toate tipurile de televizoare LED, LCD și Smart TV."
+          },
+          acCleaning: {
+            title: "Curățare AC",
+            description: "Curățare profesională și igienizare completă pentru aparate de aer condiționat."
+          },
+          acInstallation: {
+            title: "Instalare AC",
+            description: "Instalare profesională a unităților de aer condiționat."
+          },
+          freon: {
+            title: "Verificare Freon",
+            description: "Testare și reumplere cu freon pentru performanță optimă."
+          },
+          details: "Detalii și Prețuri",
+          book: "Programează Acum"
+        },
+        socialProof: {
+          title: "Vezi videoclipuri reale de reparații pe:",
+          needFast: "Ai nevoie de serviciu rapid?",
+          callUs: "Sună-ne acum sau programează online pentru un răspuns rapid!"
+        },
+        testimonials: {
+          title: "Ce Spun Clienții Noștri",
+          alex: "Serviciu excelent! Televizorul meu Samsung a fost reparat în aceeași zi. Profesionist și preț corect.",
+          gabriela: "Prompt și profesionist. Aerul meu condiționat funcționează perfect acum!",
+          mihai: "Montaj și configurare impecabilă a televizorului pe perete. Recomand cu încredere!"
+        },
+        pricing: {
+          title: "Listă de Prețuri",
+          subtitle: "Prețuri transparente pentru toate serviciile noastre",
+          tvTab: "Reparații TV",
+          acTab: "Servicii AC",
+          size: "Dimensiune",
+          service: "Serviciu",
+          standardPrice: "Preț Standard",
+          promoPrice: "Preț Promo",
+          savings: "Economii",
+          bookNow: "Programează Acum",
+          acCleaning: "Curățare AC",
+          acInstallation: "Instalare AC",
+          freonCheck: "Verificare Freon"
+        },
+        contact: {
+          title: "Contact și Programare",
+          name: "Nume",
+          namePlaceholder: "Numele tău",
+          email: "Email",
+          emailPlaceholder: "email@exemplu.com",
+          phone: "Telefon",
+          phonePlaceholder: "Numărul tău de telefon",
+          date: "Data Programării",
+          selectDate: "Selectează o dată",
+          time: "Interval Orar",
+          selectTime: "Selectează o oră",
+          message: "Mesaj",
+          messagePlaceholder: "Spune-ne despre nevoile tale de reparații",
+          submit: "Trimite și Programează"
+        },
+        footer: {
+          description: "Servicii profesionale de reparații electronice și aer condiționat în București, cu răspuns rapid și calitate garantată.",
+          servicesTitle: "Servicii",
+          services: {
+            tv: "Reparații TV",
+            acCleaning: "Curățare AC",
+            acInstallation: "Instalare AC",
+            freon: "Verificare Freon",
+            diagnostics: "Diagnosticare"
+          },
+          infoTitle: "Informații",
+          info: {
+            about: "Despre Noi",
+            terms: "Termeni și Condiții",
+            privacy: "Politica de Confidențialitate",
+            warranty: "Garanție",
+            faq: "Întrebări Frecvente"
+          },
+          contactTitle: "Contact",
+          address: "Adresă: Sector 3, București, România",
+          phone: "Telefon: +40 741 318 528",
+          email: "Email: contact@repairmaster.ro",
+          hours: "Program: Luni - Duminică: 18:00 - 22:00",
+          rights: "Toate drepturile rezervate."
+        }
+      },
+      ar: {
+        navbar: {
+          services: "الخدمات",
+          pricing: "الأسعار",
+          testimonials: "آراء العملاء",
+          contact: "اتصل بنا",
+        },
+        hero: {
+          title: "إصلاحات سريعة وموثوقة لمنزلك ومكتبك",
+          subtitle: "نقوم بإصلاح الإلكترونيات وأجهزة تكييف الهواء في بوخارست. أسعار شفافة، ضمان لمدة 6 أشهر، واستجابة سريعة.",
+          cta: "احجز خدمة",
+          imageAlt: "فني إصلاح يقوم بإصلاح الإلكترونيات"
+        },
+        services: {
+          title: "خدماتنا",
+          subtitle: "نقدم خدمات إصلاح وصيانة كاملة للإلكترونيات وأنظمة تكييف الهواء.",
+          tv: {
+            title: "إصلاح التلفزيون",
+            description: "نقوم بإصلاح جميع أنواع تلفزيونات LED و LCD والتلفزيونات الذكية."
+          },
+          acCleaning: {
+            title: "تنظيف المكيف",
+            description: "تنظيف احترافي وتعقيم كامل لمكيفات الهواء."
+          },
+          acInstallation: {
+            title: "تركيب المكيف",
+            description: "تركيب احترافي لوحدات تكييف الهواء."
+          },
+          freon: {
+            title: "فحص الفريون",
+            description: "اختبار وإعادة تعبئة الفريون للأداء الأمثل."
+          },
+          details: "التفاصيل والأسعار",
+          book: "احجز الآن"
+        },
+        socialProof: {
+          title: "شاهد فيديوهات الإصلاح الحقيقية على:",
+          needFast: "هل تحتاج إلى خدمة سريعة؟",
+          callUs: "اتصل بنا الآن أو احجز عبر الإنترنت للحصول على استجابة سريعة!"
+        },
+        testimonials: {
+          title: "ماذا يقول عملاؤنا",
+          alex: "خدمة ممتازة! تم إصلاح تلفزيون سامسونج الخاص بي في نفس اليوم. احترافي وسعر عادل.",
+          gabriela: "سريع ومحترف. مكيف الهواء الخاص بي يعمل بشكل مثالي الآن!",
+          mihai: "تركيب وإعداد مثالي للتلفزيون على الحائط. أوصي به بشدة!"
+        },
+        pricing: {
+          title: "قائمة الأسعار",
+          subtitle: "أسعار شفافة لجميع خدماتنا",
+          tvTab: "إصلاح التلفزيون",
+          acTab: "خدمات المكيف",
+          size: "الحجم",
+          service: "الخدمة",
+          standardPrice: "السعر العادي",
+          promoPrice: "سعر العرض",
+          savings: "التوفير",
+          bookNow: "احجز الآن",
+          acCleaning: "تنظيف المكيف",
+          acInstallation: "تركيب المكيف",
+          freonCheck: "فحص الفريون"
+        },
+        contact: {
+          title: "الاتصال والحجز",
+          name: "الاسم",
+          namePlaceholder: "اسمك",
+          email: "البريد الإلكتروني",
+          emailPlaceholder: "بريدك@مثال.com",
+          phone: "الهاتف",
+          phonePlaceholder: "رقم هاتفك",
+          date: "تاريخ الحجز",
+          selectDate: "اختر تاريخًا",
+          time: "الوقت",
+          selectTime: "اختر وقتًا",
+          message: "الرسالة",
+          messagePlaceholder: "أخبرنا عن احتياجاتك للإصلاح",
+          submit: "إرسال وحجز"
+        },
+        footer: {
+          description: "خدمات إصلاح احترافية للإلكترونيات وتكييف الهواء في بوخارست، مع استجابة سريعة وجودة مضمونة.",
+          servicesTitle: "الخدمات",
+          services: {
+            tv: "إصلاح التلفزيون",
+            acCleaning: "تنظيف المكيف",
+            acInstallation: "تركيب المكيف",
+            freon: "فحص الفريون",
+            diagnostics: "التشخيص"
+          },
+          infoTitle: "معلومات",
+          info: {
+            about: "من نحن",
+            terms: "الشروط والأحكام",
+            privacy: "سياسة الخصوصية",
+            warranty: "الضمان",
+            faq: "الأسئلة الشائعة"
+          },
+          contactTitle: "اتصل بنا",
+          address: "العنوان: القطاع 3، بوخارست، رومانيا",
+          phone: "الهاتف: 528 318 741 40+",
+          email: "البريد الإلكتروني: contact@repairmaster.ro",
+          hours: "ساعات العمل: الاثنين - الأحد: 18:00 - 22:00",
+          rights: "جميع الحقوق محفوظة."
+        }
+      }
+    };
+
+    // DOM Elements
+    const languageToggles = document.querySelectorAll('.language-toggle');
+    const languageDropdowns = document.querySelectorAll('.language-dropdown');
+    const languageItems = document.querySelectorAll('.dropdown-item');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const lightIcons = document.querySelectorAll('.light-icon');
+    const darkIcons = document.querySelectorAll('.dark-icon');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('[data-tab-content]');
+
+    // Current state
+    let currentLanguage = 'en';
+    let isDarkMode = false;
+
+    // Functions
+    function getNestedTranslation(obj, path) {
+      const keys = path.split('.');
+      let result = obj;
+      
+      for (const key of keys) {
+        if (result && typeof result === 'object' && key in result) {
+          result = result[key];
+        } else {
+          return path; // Return the path if translation not found
+        }
+      }
+      
+      return result;
+    }
+
+    function updateLanguage(lang) {
+      currentLanguage = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      
+      // Update text content
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        const translation = getNestedTranslation(translations[lang], key);
+        if (typeof translation === 'string') {
+          el.textContent = translation;
+        }
+      });
+      
+      // Update attributes
+      document.querySelectorAll('[data-lang-attr]').forEach(el => {
+        const attrData = el.getAttribute('data-lang-attr').split(':');
+        if (attrData.length === 2) {
+          const [attr, key] = attrData;
+          const translation = getNestedTranslation(translations[lang], key);
+          if (typeof translation === 'string') {
+            el.setAttribute(attr, translation);
+          }
+        }
+      });
+      
+      // Close all dropdowns
+      languageDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      
+      // Update active language
+      languageItems.forEach(item => {
+        if (item.getAttribute('data-lang') === lang) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    function toggleDarkMode() {
+      isDarkMode = !isDarkMode;
+      document.documentElement.classList.toggle('dark', isDarkMode);
+      
+      // Update icons
+      lightIcons.forEach(icon => {
+        icon.style.display = isDarkMode ? 'none' : 'inline-block';
+      });
+      
+      darkIcons.forEach(icon => {
+        icon.style.display =  'inline-block';
+      });
+      
+      darkIcons.forEach(icon => {
+        icon.style.display = isDarkMode ? 'inline-block' : 'none';
+      });
+    }
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('show');
+    }
+
+    function switchTab(tabId) {
+      tabs.forEach(tab => {
+        const isSelected = tab.getAttribute('data-tab') === tabId;
+        tab.setAttribute('aria-selected', isSelected);
+      });
+      
+      tabContents.forEach(content => {
+        if (content.getAttribute('data-tab-content') === tabId) {
+          content.style.display = 'block';
+        } else {
+          content.style.display = 'none';
+        }
+      });
+    }
+
+    // Event Listeners
+    languageToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const dropdown = toggle.nextElementSibling;
+        dropdown.classList.toggle('show');
+      });
+    });
+
+    languageItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const lang = item.getAttribute('data-lang');
+        updateLanguage(lang);
+      });
+    });
+
+    themeToggles.forEach(toggle => {
+      toggle.addEventListener('click', toggleDarkMode);
+    });
+
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        switchTab(tabId);
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        languageDropdowns.forEach(dropdown => {
+          dropdown.classList.remove('show');
+        });
+      }
+    });
+
+    // Form submission
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your booking request! We will contact you shortly to confirm your appointment.');
+    });
+
+    // Initialize
+    updateLanguage(currentLanguage);
+    
+    // Check for system dark mode preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      toggleDarkMode();
+    }
+  </script>
+</body>
+</html>

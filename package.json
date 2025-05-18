@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "mkdir -p dist && cp -r index.html dist/ && cp -r assets dist/ || true",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "preinstall": "npm install --legacy-peer-deps || true"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

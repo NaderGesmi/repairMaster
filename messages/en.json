@@ -1,0 +1,110 @@
+{
+  "navbar": {
+    "services": "Services",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Professional Repair Services",
+    "subtitle": "We repair and maintain your electrical appliances with care and professionalism. Our team of experienced technicians is ready to solve any problem.",
+    "cta": "Schedule a Visit",
+    "ctaSecondary": "Learn More",
+    "languages": "Available in Romanian, English, and Arabic",
+    "diagnostic": "Free On-Site Diagnostic",
+    "availability": "Available on weekdays from 6:00 PM - 10:00 PM and weekends from 10:00 AM - 5:00 PM"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We offer a wide range of repair services for your electrical appliances",
+    "tv": {
+      "title": "TV Repairs",
+      "description": "We repair all types of televisions, from LCD models to Smart TVs."
+    },
+    "ac": {
+      "title": "AC Repairs",
+      "description": "Complete repair and maintenance services for air conditioning units."
+    },
+    "installation": {
+      "title": "AC Installation",
+      "description": "Professional installation of air conditioning units for maximum efficiency."
+    },
+    "cleaning": {
+      "title": "AC Cleaning",
+      "description": "Complete cleaning and disinfection of air conditioning units."
+    },
+    "refrigerant": {
+      "title": "Refrigerant Recharge",
+      "description": "Refrigerant charging and level checking for optimal performance."
+    },
+    "diagnostic": {
+      "title": "Diagnostics",
+      "description": "Accurate problem diagnosis and transparent cost estimates."
+    }
+  },
+  "pricing": {
+    "title": "Transparent Pricing",
+    "subtitle": "We offer competitive prices with no hidden costs",
+    "basic": {
+      "title": "Basic Services",
+      "price": "from 100 RON",
+      "features": [
+        "Diagnostics",
+        "Basic cleaning",
+        "General check-up"
+      ]
+    },
+    "standard": {
+      "title": "Standard Services",
+      "price": "from 200 RON",
+      "features": [
+        "All basic services",
+        "Minor repairs",
+        "Refrigerant recharge",
+        "3-month warranty"
+      ]
+    },
+    "premium": {
+      "title": "Premium Services",
+      "price": "from 300 RON",
+      "features": [
+        "All standard services",
+        "Major repairs",
+        "Original parts",
+        "6-month warranty",
+        "24/7 support"
+      ]
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real experiences from our satisfied customers"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help. Send us a message and we'll respond as soon as possible.",
+    "availability": "Working Hours: Weekdays 6:00 PM - 10:00 PM, Weekends 10:00 AM - 5:00 PM",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "phone": "Phone",
+    "phonePlaceholder": "Enter your phone number",
+    "service": "Desired Service",
+    "selectService": "Select a service",
+    "message": "Message",
+    "messagePlaceholder": "Describe your problem or request",
+    "sendWhatsApp": "Send via WhatsApp",
+    "date": "Date",
+    "selectDate": "Select date",
+    "time": "Time",
+    "selectTime": "Select time"
+  },
+  "footer": {
+    "description": "Professional repair services for electrical appliances in Bucharest and surrounding areas.",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact",
+    "social": "Social Media",
+    "workingHours": "Weekdays: 6:00 PM - 10:00 PM\nWeekends: 10:00 AM - 5:00 PM",
+    "copyright": "© 2024 RepairMaster. All rights reserved."
+  }
+} 

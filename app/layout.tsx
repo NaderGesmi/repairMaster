@@ -1,14 +1,18 @@
-import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "@/app/globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { FloatingCTA } from "@/components/floating-cta"
 
-export const metadata = {
-  title: "RepairMaster - Professional Repair Services",
-  description: "Fast, reliable repairs for your home & office electronics and air conditioning in Bucharest.",
-    generator: 'v0.dev'
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "RepairMaster - Servicii de Reparații TV și AC",
+  description: "Servicii profesionale de reparații pentru televizoare și aparate de aer condiționat. Rezolvăm rapid orice problemă!",
 }
 
 export default function RootLayout({
@@ -17,17 +21,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <LanguageProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <Navbar />
-              <div className="flex-1">{children}</div>
-              <Footer />
-            </div>
-          </ThemeProvider>
-        </LanguageProvider>
+    <html lang="ro" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LanguageProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <FloatingCTA />
+            <WhatsAppButton />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,32 +1,70 @@
 "use client"
 
-import { useLanguage } from "@/components/language-provider"
-import { InstagramIcon as BrandTiktok, InstagramIcon as BrandInstagram } from "lucide-react"
+import { useLanguage } from "./language-provider"
+import { FadeIn, BounceButton } from "./animations"
+import { motion } from "framer-motion"
+import { Instagram, Phone } from "lucide-react"
 
 export function SocialProof() {
-  const { t, dir } = useLanguage()
+  const { t } = useLanguage()
 
   return (
-    <section className="py-12 bg-muted" dir={dir}>
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h3 className="text-xl font-medium">{t("socialProof.title")}</h3>
-          <div className="flex flex-wrap justify-center items-center gap-6">
-            <div className="flex items-center gap-2">
-              <BrandTiktok className="h-6 w-6" />
-              <span className="text-sm font-medium">TikTok @repairversehub</span>
+    <section className="social-proof">
+      <div className="social-proof__container">
+        <FadeIn>
+          <div className="social-proof__header">
+            <h2 className="social-proof__title">{t("socialProof.title")}</h2>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <div className="social-proof__content">
+            <div className="social-proof__social">
+              <motion.a
+                href="https://www.instagram.com/repairversehub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-proof__link"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Instagram className="social-proof__icon" />
+                <span>@repairversehub</span>
+              </motion.a>
+
+              <motion.a
+                href="https://www.tiktok.com/@repairversehub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-proof__link"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg
+                  className="social-proof__icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                </svg>
+                <span>@repairversehub</span>
+              </motion.a>
             </div>
-            <div className="flex items-center gap-2">
-              <BrandInstagram className="h-6 w-6" />
-              <span className="text-sm font-medium">Instagram @repairversehub</span>
+
+            <div className="social-proof__cta">
+              <h3 className="social-proof__cta-title">{t("socialProof.needFast")}</h3>
+              <p className="social-proof__cta-text">{t("socialProof.callUs")}</p>
+              <BounceButton
+                className="social-proof__phone"
+                onClick={() => window.location.href = "tel:+40741318528"}
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                +40 741 318 528
+              </BounceButton>
             </div>
           </div>
-        </div>
-        <div className="mt-8 text-center">
-          <h3 className="text-xl font-bold">{t("socialProof.needFast")}</h3>
-          <p className="mt-2">{t("socialProof.callUs")}</p>
-          <p className="mt-2 text-xl font-bold">📞 +40 741 318 528</p>
-        </div>
+        </FadeIn>
       </div>
     </section>
   )

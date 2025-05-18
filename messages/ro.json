@@ -1,0 +1,110 @@
+{
+  "navbar": {
+    "services": "Servicii",
+    "pricing": "Prețuri",
+    "testimonials": "Recenzii",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Servicii de Reparații Profesionale",
+    "subtitle": "Reparăm și întreținem aparatele tale electrice cu grijă și profesionalism. Echipa noastră de tehnicieni experimentați este pregătită să rezolve orice problemă.",
+    "cta": "Programează o Vizită",
+    "ctaSecondary": "Află Mai Multe",
+    "languages": "Disponibil în Română, Engleză și Arabă",
+    "diagnostic": "Diagnosticare Gratuită la Fața Locului",
+    "availability": "Disponibili în zilele lucrătoare între orele 18:00 - 22:00 și în weekend între orele 10:00 - 17:00"
+  },
+  "services": {
+    "title": "Serviciile Noastre",
+    "subtitle": "Oferim o gamă largă de servicii de reparații pentru aparatele tale electrice",
+    "tv": {
+      "title": "Reparații TV",
+      "description": "Reparăm toate tipurile de televizoare, de la modele LCD până la cele Smart TV."
+    },
+    "ac": {
+      "title": "Reparații AC",
+      "description": "Servicii complete de reparații și întreținere pentru aparate de aer condiționat."
+    },
+    "installation": {
+      "title": "Instalare AC",
+      "description": "Instalare profesională a aparatelor de aer condiționat pentru eficiență maximă."
+    },
+    "cleaning": {
+      "title": "Curățare AC",
+      "description": "Curățare și dezinfecție completă a aparatelor de aer condiționat."
+    },
+    "refrigerant": {
+      "title": "Încărcare Freon",
+      "description": "Încărcare și verificare a nivelului de freon pentru performanță optimă."
+    },
+    "diagnostic": {
+      "title": "Diagnosticare",
+      "description": "Diagnosticare precisă a problemelor și estimări de cost transparente."
+    }
+  },
+  "pricing": {
+    "title": "Prețuri Transparente",
+    "subtitle": "Oferim prețuri competitive și fără costuri ascunse",
+    "basic": {
+      "title": "Servicii de Bază",
+      "price": "de la 100 RON",
+      "features": [
+        "Diagnosticare",
+        "Curățare de bază",
+        "Verificare generală"
+      ]
+    },
+    "standard": {
+      "title": "Servicii Standard",
+      "price": "de la 200 RON",
+      "features": [
+        "Toate serviciile de bază",
+        "Reparații minore",
+        "Încărcare freon",
+        "Garanție 3 luni"
+      ]
+    },
+    "premium": {
+      "title": "Servicii Premium",
+      "price": "de la 300 RON",
+      "features": [
+        "Toate serviciile standard",
+        "Reparații majore",
+        "Piese originale",
+        "Garanție 6 luni",
+        "Suport 24/7"
+      ]
+    }
+  },
+  "testimonials": {
+    "title": "Ce Spun Clienții Noștri",
+    "subtitle": "Experiențele reale ale clienților noștri mulțumiți"
+  },
+  "contact": {
+    "title": "Contactează-ne",
+    "subtitle": "Suntem aici să te ajutăm. Trimite-ne un mesaj și îți vom răspunde în cel mai scurt timp.",
+    "availability": "Program de lucru: Zile lucrătoare 18:00 - 22:00, Weekend 10:00 - 17:00",
+    "name": "Nume",
+    "namePlaceholder": "Introdu numele tău",
+    "phone": "Telefon",
+    "phonePlaceholder": "Introdu numărul tău de telefon",
+    "service": "Serviciu Dorit",
+    "selectService": "Selectează un serviciu",
+    "message": "Mesaj",
+    "messagePlaceholder": "Descrie problema sau cerința ta",
+    "sendWhatsApp": "Trimite pe WhatsApp",
+    "date": "Data",
+    "selectDate": "Selectează data",
+    "time": "Ora",
+    "selectTime": "Selectează ora"
+  },
+  "footer": {
+    "description": "Servicii profesionale de reparații pentru aparate electrice în București și împrejurimi.",
+    "services": "Servicii",
+    "about": "Despre Noi",
+    "contact": "Contact",
+    "social": "Social Media",
+    "workingHours": "Zile lucrătoare: 18:00 - 22:00\nWeekend: 10:00 - 17:00",
+    "copyright": "© 2024 RepairMaster. Toate drepturile rezervate."
+  }
+} 

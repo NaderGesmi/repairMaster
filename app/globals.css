@@ -87,6 +87,7 @@
 /* Navbar */
 .navbar {
   @apply sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .navbar__container {
@@ -94,7 +95,7 @@
 }
 
 .navbar__brand {
-  @apply text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap;
+  @apply text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap flex items-center;
 }
 
 .navbar__menu {
@@ -102,19 +103,15 @@
 }
 
 .navbar__link {
-  @apply text-sm font-medium transition-colors hover:text-primary touch-target whitespace-nowrap;
+  @apply text-sm font-medium transition-all duration-200 hover:text-primary touch-target whitespace-nowrap flex items-center px-3 py-2 rounded-md hover:bg-accent/10;
 }
 
 .navbar__actions {
   @apply flex items-center gap-4;
 }
 
-.navbar__social {
-  @apply text-muted-foreground hover:text-foreground touch-target p-2 transition-transform duration-200 hover:scale-110;
-}
-
 .navbar__theme-toggle {
-  @apply text-muted-foreground hover:text-foreground touch-target p-2 transition-transform duration-200 hover:scale-110;
+  @apply text-muted-foreground hover:text-foreground touch-target p-2 transition-all duration-200 hover:scale-110 hover:bg-accent/10 rounded-md;
 }
 
 /* Language Switcher */
@@ -123,7 +120,7 @@
 }
 
 .navbar__lang-btn {
-  @apply flex items-center gap-2 px-3 py-2 text-sm font-medium transition-all duration-200 hover:text-primary touch-target rounded-md hover:bg-accent relative overflow-hidden;
+  @apply flex items-center gap-2 px-3 py-2 text-sm font-medium transition-all duration-200 hover:text-primary touch-target rounded-md hover:bg-accent/10 relative overflow-hidden;
 }
 
 .navbar__lang-btn--active {
@@ -153,24 +150,35 @@
 
 /* Mobile Menu Button */
 .navbar__mobile-menu {
-  @apply md:hidden p-2 transition-transform duration-200 hover:scale-110;
+  @apply md:hidden p-2 transition-all duration-200 hover:scale-110 hover:bg-accent/10 rounded-md;
 }
 
 /* Mobile Menu */
 .navbar__mobile-menu-content {
-  @apply fixed inset-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden animate-in slide-in-from-top duration-300;
+  @apply fixed inset-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:hidden;
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: -4px 0 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .navbar__mobile-menu-container {
-  @apply container flex h-16 items-center justify-between px-4;
+  @apply container flex h-16 items-center justify-between px-4 border-b;
 }
 
 .navbar__mobile-menu-links {
-  @apply flex flex-col gap-4 p-4;
+  @apply flex flex-col gap-2 p-4;
+  padding-top: 1rem;
 }
 
 .navbar__mobile-menu-link {
-  @apply text-base font-medium transition-colors hover:text-primary;
+  @apply text-base font-medium transition-all duration-200 hover:text-primary py-3 px-4 rounded-md hover:bg-accent/10 flex items-center;
+}
+
+/* Ensure content doesn't shift when mobile menu opens */
+body.mobile-menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 /* Hero */

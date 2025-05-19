@@ -2,9 +2,9 @@
 
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
-import { Instagram, Moon, Sun, Menu, X } from "lucide-react"
+import { Instagram, Moon, Sun, Menu, X, Home, Wrench, DollarSign, MessageSquare, Phone } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { BounceButton } from "./animations"
 
@@ -15,6 +15,18 @@ export function Navbar() {
   const { theme, setTheme } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  // Handle body class when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('mobile-menu-open')
+    } else {
+      document.body.classList.remove('mobile-menu-open')
+    }
+    return () => {
+      document.body.classList.remove('mobile-menu-open')
+    }
+  }, [isMobileMenuOpen])
+
   const languages: { code: Language; label: string; flag: string }[] = [
     { code: "ro", label: "RO", flag: "🇷🇴" },
     { code: "en", label: "EN", flag: "🇬🇧" },
@@ -22,10 +34,10 @@ export function Navbar() {
   ]
 
   const navLinks = [
-    { href: "#services", label: t("navbar.services") },
-    { href: "#pricing", label: t("navbar.pricing") },
-    { href: "#testimonials", label: t("navbar.testimonials") },
-    { href: "#contact", label: t("navbar.contact") },
+    { href: "#services", label: t("navbar.services"), icon: Wrench },
+    { href: "#pricing", label: t("navbar.pricing"), icon: DollarSign },
+    { href: "#testimonials", label: t("navbar.testimonials"), icon: MessageSquare },
+    { href: "#contact", label: t("navbar.contact"), icon: Phone },
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -71,12 +83,15 @@ export function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className="navbar__link"
                 >
+                  <link.icon className="h-4 w-4 mr-2 inline-block" />
                   {link.label}
                 </a>
               </motion.div>
@@ -85,39 +100,6 @@ export function Navbar() {
         </div>
 
         <div className="navbar__actions">
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href="https://www.instagram.com/repairversehub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="navbar__social"
-              aria-label="Visit our Instagram"
-            >
-              <Instagram className="h-5 w-5" />
-              <span className="sr-only">Instagram</span>
-            </Link>
-          </motion.div>
-
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href="https://www.tiktok.com/@repairversehub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="navbar__social"
-              aria-label="Visit our TikTok"
-            >
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-              </svg>
-              <span className="sr-only">TikTok</span>
-            </Link>
-          </motion.div>
-
           <BounceButton
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="navbar__theme-toggle"
@@ -170,14 +152,15 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="navbar__mobile-menu-content"
           >
             <div className="navbar__mobile-menu-container">
               <Link href="/" className="navbar__brand">
+                <Home className="h-5 w-5 mr-2 inline-block" />
                 RepairMaster
               </Link>
               <BounceButton
@@ -199,12 +182,15 @@ export function Navbar() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className="navbar__mobile-menu-link"
                   >
+                    <link.icon className="h-5 w-5 mr-3 inline-block" />
                     {link.label}
                   </a>
                 </motion.div>
